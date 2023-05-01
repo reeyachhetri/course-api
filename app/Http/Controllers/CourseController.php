@@ -15,7 +15,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $courses = Course::all();
+        return $courses;
     }
 
     /**
@@ -36,7 +37,22 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
+        $course = Course::create([
+        'provider_id' => $request->provider_id,
+        'title' => $request->title,
+        'duration' => $request->duration,
+        'earliest_intake' => $request->earliest_intake,
+        'deadline' => $request->deadline,
+        'tuition' => $request->tuition,
+        'application_fee' => $request->application_fee,
+        'commission' => $request->commission,
+        'description' => $request->description,
+        'admission_requirements' => $request->admission_requirements,
+        ]);
+        return response()->json([
+            'status' => 'success',
+            'data'=> $course,
+        ]);
     }
 
     /**
@@ -47,7 +63,7 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        //
+        return response()->json(['course'=>$course]);
     }
 
     /**
@@ -68,9 +84,15 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCourseRequest $request, Course $course)
+    public function update(UpdateCourseRequest $request, $id)
     {
-        //
+        $course = Course::find($id);
+        $course->update($request->all());
+
+        return response()->json([
+            'status'=> 'successful',
+            'data'=> $course,
+        ]);
     }
 
     /**
@@ -81,6 +103,10 @@ class CourseController extends Controller
      */
     public function destroy(Course $course)
     {
-        //
+        $course->delete();
+
+        return response()->json([
+            'message'=>'Deleted'
+        ]);
     }
 }

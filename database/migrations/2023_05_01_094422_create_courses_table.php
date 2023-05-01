@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('application_fee');
             $table->integer('commission');
             $table->string('description');
-            $table->json('admission_equirements');
+            $table->json('admission_requirements');
             $table->timestamps();
         });
 

@@ -15,8 +15,19 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
+            $table->integer('provider_id');
+            $table->string('title');
+            $table->string('duration');
+            $table->timestamp('earliest_intake');
+            $table->timestamp('deadline')->nullable();
+            $table->integer('tuition');
+            $table->integer('application_fee');
+            $table->integer('commission');
+            $table->string('description');
+            $table->json('admission_equirements');
             $table->timestamps();
         });
+
     }
 
     /**

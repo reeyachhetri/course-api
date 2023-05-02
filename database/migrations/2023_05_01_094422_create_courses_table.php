@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->integer('provider_id');
+            $table->unsignedBigInteger('provider_id')->default(1);
             $table->string('title');
             $table->string('duration');
             $table->timestamp('earliest_intake');

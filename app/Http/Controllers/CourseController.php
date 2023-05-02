@@ -7,6 +7,7 @@ use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 use App\Services\CourseService;
+use App\Http\Resources\CourseResource;
 
 class CourseController extends Controller
 {
@@ -22,7 +23,7 @@ class CourseController extends Controller
     public function index()
     {
         $courses = $this->courseservice->getAllCourses();
-        return $courses;
+        return CourseResource::collection($courses);
     }
 
 
@@ -30,6 +31,7 @@ class CourseController extends Controller
 
     public function store(StoreCourseRequest $request, CourseService $courseservice)
     {
+
         $course = $this->courseservice->createCourse(($request->validated()));
         return response()->json([
             'status' => 'success',

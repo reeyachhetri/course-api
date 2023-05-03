@@ -24,7 +24,21 @@ class UpdateCourseRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'tuition' => 'required|numeric|min:0',
+            'duration' => 'required|integer',
+            'application_fee' => 'required|numeric|min:0',
+            'description' => 'required|string',
+            'commission' => 'required|integer',
+            'admission_requirements' => 'required|string',
+
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'title.required' => 'The title field is required',
+            'application_fee.min' => 'The application fee must be minimum 0'
         ];
     }
 }

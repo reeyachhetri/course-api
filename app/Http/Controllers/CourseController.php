@@ -13,26 +13,26 @@ class CourseController extends Controller
 {
 
     protected $courseservice;
-    public function __construct(CourseService $courseservice)
+    // public function __construct(CourseService $courseservice)
+    // {
+    //     $this->courseservice = $courseservice;
+    // }
+
+
+
+    public function index(CourseService $courseService)
     {
-        $this->courseservice = $courseservice;
-    }
-
-
-
-    public function index()
-    {
-        $courses = $this->courseservice->getAllCourses();
+        $courses = $courseService->getAllCourses();
         return CourseResource::collection($courses);
     }
 
 
 
 
-    public function store(StoreCourseRequest $request, CourseService $courseservice)
+    public function store(StoreCourseRequest $request, CourseService $courseService)
     {
 
-        $course = $this->courseservice->createCourse(($request->validated()));
+        $course = $courseService->create(($request->validated()));
         return response()->json([
             'status' => 'success',
             'data' => $course,
@@ -50,9 +50,9 @@ class CourseController extends Controller
 
 
 
-    public function update(UpdateCourseRequest $request, Course $course)
+    public function update(UpdateCourseRequest $request, Course $course, CourseService $courseService)
     {
-        $course = $this->courseservice->updateCourse($course, $request->validated());
+        $course = $courseService->update($course, $request->validated());
 
         return response()->json([
             'status' => 'successful',
@@ -63,9 +63,9 @@ class CourseController extends Controller
 
 
 
-    public function destroy(Course $course)
+    public function destroy(CourseService $courseService, Course $course)
     {
-        $course = $this->courseservice->deleteCourse($course);
+        $course = $courseService->delete($course);
 
         return response()->json([
             'message' => 'Deleted'

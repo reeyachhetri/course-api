@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('provider_id')->default(1);
             $table->string('title');
             $table->string('duration');
-            $table->timestamp('earliest_intake');
-            $table->date('deadline')->nullable();
+            $table->date('earliest_intake');
+            $table->date('deadline');
             $table->integer('tuition');
             $table->integer('application_fee');
             $table->integer('commission');

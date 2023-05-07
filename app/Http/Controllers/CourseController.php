@@ -8,14 +8,15 @@ use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
 use App\Services\CourseService;
 use App\Http\Resources\CourseResource;
+use App\DTO\CourseDTO;
 
 class CourseController extends Controller
 {
 
-    protected $courseservice;
-    // public function __construct(CourseService $courseservice)
+    protected $courseService;
+    // public function __construct(CourseService $courseService)
     // {
-    //     $this->courseservice = $courseservice;
+    //     $this->courseService = $courseService;
     // }
 
 
@@ -27,19 +28,15 @@ class CourseController extends Controller
     }
 
 
-
-
-    public function store(StoreCourseRequest $request, CourseService $courseService)
+    public function store(StoreCourseRequest $request,CourseService $courseService)
     {
 
-        $course = $courseService->create(($request->validated()));
-        return response()->json([
-            'status' => 'success',
-            'data' => $course,
-        ]);
+        $course = $courseService->create(
+            CourseDTO::from($request->all())->toArray()
+        );
+
+        return response()->json($course);
     }
-
-
 
 
     public function show(Course $course)

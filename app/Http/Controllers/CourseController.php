@@ -13,14 +13,6 @@ use App\DTO\CourseDTO;
 class CourseController extends Controller
 {
 
-    protected $courseService;
-    // public function __construct(CourseService $courseService)
-    // {
-    //     $this->courseService = $courseService;
-    // }
-
-
-
     public function index(CourseService $courseService)
     {
         $courses = $courseService->getAllCourses();
@@ -48,7 +40,7 @@ class CourseController extends Controller
 
     public function update(UpdateCourseRequest $request, Course $course, CourseService $courseService)
     {
-        $course = $courseService->update($course, $request->validated());
+        $course = $courseService->update($course, $request->all());
 
         return new CourseResource($course);
     }

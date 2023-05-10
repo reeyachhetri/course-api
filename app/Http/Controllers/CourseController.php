@@ -34,14 +34,13 @@ class CourseController extends Controller
         $course = $courseService->create(
             CourseDTO::from($request->all())->toArray()
         );
-
-        return response()->json($course);
+        return new CourseResource($course);
     }
 
 
     public function show(Course $course)
     {
-        return response()->json(['course' => $course]);
+        return new CourseResource($course);
     }
 
 
@@ -51,10 +50,7 @@ class CourseController extends Controller
     {
         $course = $courseService->update($course, $request->validated());
 
-        return response()->json([
-            'status' => 'successful',
-            'data' => $course,
-        ]);
+        return new CourseResource($course);
     }
 
 
@@ -64,8 +60,6 @@ class CourseController extends Controller
     {
         $course = $courseService->delete($course);
 
-        return response()->json([
-            'message' => 'Deleted'
-        ]);
+        return new CourseResource($course);
     }
 }

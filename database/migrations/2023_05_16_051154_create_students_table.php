@@ -83,8 +83,11 @@ return new class extends Migration
             $table->string('employment_status');
             $table->date('employment_start');
             $table->date('employment_end');
-            
 
+            //Citizen and Visa Information
+            $table->string('question');
+            $table->string('option');
+            
             $table->softDeletes();
             $table->timestamps();
         });

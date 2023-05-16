@@ -54,7 +54,17 @@ return new class extends Migration
             $table->enum('parents_education',['NA','Secondary','High School','Undergraduate','Graduate','PHD']);
             $table->string('estimated_annual_household');
 
-
+            //Student Education Information
+            $table->enum('highest_education_level',['NA','Secondary','High School','Undergraduate','Graduate','PHD']);
+            $table->string('high_school_name');
+            $table->string('high_school_address');
+            $table->date('high_school_start_date');
+            $table->date('high_school_end_date');
+            $table->string('college_name');
+            $table->string('college_address');
+            $table->date('college_start_date');
+            $table->date('college_end_date');
+            
             $table->softDeletes();
             $table->timestamps();
         });

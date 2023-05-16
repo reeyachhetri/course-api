@@ -34,7 +34,15 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('relation');
             $table->string('emergency_contact_number');
+
+            //Permanent Address
             $table->string('state');
+            $table->string('district');
+            $table->string('postal_code');
+            $table->string('street');
+
+            
+
             $table->softDeletes();
             $table->timestamps();
         });

@@ -48,10 +48,12 @@ return new class extends Migration
             $table->string('temporary_street');
 
             //Parent's Information
-            $table->string('parents_full_name');
-            $table->string('parents_email');
-            $table->string('parents_contact_number');
-            $table->enum('parents_education',['NA','Secondary','High School','Undergraduate','Graduate','PHD']);
+            $table->string('guardians_first_name');
+            $table->string('guardians_middle_name');
+            $table->string('guardians_last_name');
+            $table->string('guardians_email_address');
+            $table->string('guardians_contact_number');
+            $table->enum('guardians_education',['NA','Secondary','High School','Undergraduate','Graduate','PHD']);
             $table->string('estimated_annual_household');
 
             //Student Education Information
@@ -73,7 +75,16 @@ return new class extends Migration
             $table->string('reading');
             $table->string('writing');
             $table->string('speaking');
+
+            //Employment
+            $table->string('employer_name');
+            $table->string('employer_address');
+            $table->string('job_title');
+            $table->string('employment_status');
+            $table->date('employment_start');
+            $table->date('employment_end');
             
+
             $table->softDeletes();
             $table->timestamps();
         });

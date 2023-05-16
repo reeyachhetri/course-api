@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('contact_number');
             $table->string('nationality');
             $table->enum('gender',['Male','Female','Other']);
-            $table->enum('martial_status',['Single','Married']);
+            $table->enum('marital_status',['Single','Married']);
             $table->date('date_of_birth');
             $table->string('country_of_birth')->nullable();
             $table->string('preferred_contact_details')->nullable();

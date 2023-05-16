@@ -24,7 +24,7 @@ class StudentResource extends JsonResource
         'Contact Number'=>$this->contact_number,
         'Nationality'=>$this->nationality,
         'Gender'=>$this->gender,
-        'Marital Status'=>$this->martial_status,
+        'Marital Status'=>$this->marital_status,
         'Date of Birth'=>$this->date_of_birth,
         'Country of Birth'=>$this->country_of_birth,
         'Preferred Contact Details'=>$this->preferred_contact_details,

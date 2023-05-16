@@ -18,7 +18,7 @@ class Student extends Model
         'contact_number',
         'nationality',
         'gender',
-        'martial_status',
+        'marital_status',
         'date_of_birth',
         'country_of_birth',
         'preferred_contact_details',

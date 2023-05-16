@@ -64,6 +64,15 @@ return new class extends Migration
             $table->string('college_address');
             $table->date('college_start_date');
             $table->date('college_end_date');
+
+            //English And Standardized Test Scores
+            $table->enum('exams_taken',['IELTS','PTE','TOEFL', 'GMAT', 'ACT', 'GRE', 'SAT', 'Duolingo', 'CAE']);
+            $table->date('exams_date');
+            $table->string('overall_score');
+            $table->string('listening');
+            $table->string('reading');
+            $table->string('writing');
+            $table->string('speaking');
             
             $table->softDeletes();
             $table->timestamps();

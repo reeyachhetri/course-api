@@ -17,29 +17,29 @@ return new class extends Migration
             $table->id();
 
             //Basic Information
-            $table->string('email');
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
+            $table->string('email');
             $table->string('contact_number');
             $table->string('nationality');
             $table->enum('gender',['Male','Female','Other']);
             $table->enum('martial_status',['Single','Married','Divorced']);
-            $table->date('dob');
+            $table->date('date_of_birth');
             $table->string('country_of_birth');
-            $table->string('preferred_contact');
+            $table->string('preferred_contact_details');
             $table->string('native_language');
 
             //Emergency Contact
-            $table->string('full_name');
-            $table->string('relation');
+            $table->string('emergency_contact_full_name');
+            $table->string('emergency_contact_relation');
             $table->string('emergency_contact_number');
 
             //Permanent Address
-            $table->string('state');
-            $table->string('district');
-            $table->string('postal_code');
-            $table->string('street');
+            $table->string('permanent_state');
+            $table->string('permanent_district');
+            $table->string('permanent_postal_code');
+            $table->string('permanent_street');
 
             //Temporary Address
             $table->string('temporary_state');
@@ -48,13 +48,14 @@ return new class extends Migration
             $table->string('temporary_street');
 
             //Parent's Information
-            $table->string('guardians_first_name');
-            $table->string('guardians_middle_name');
-            $table->string('guardians_last_name');
-            $table->string('guardians_email_address');
-            $table->string('guardians_contact_number');
-            $table->string('guardians_education');
-            $table->string('estimated_annual_household');
+            $table->string('guardian_first_name');
+            $table->string('guardian_middle_name');
+            $table->string('guardian_last_name');
+            $table->string('guardian_email_address');
+            $table->string('guardian_contact_number');
+            $table->string('guardian_relation');
+            $table->string('guardian_highest_education_level');
+            $table->string('guardian_estimated_annual_household_number');
 
             //Student Education Information',
             $table->string('highest_education_level');
@@ -68,13 +69,7 @@ return new class extends Migration
             $table->date('college_end_date');
 
             //English And Standardized Test Scores
-            $table->string('exams_taken');
-            $table->date('exams_date');
-            $table->string('overall_score');
-            $table->string('listening');
-            $table->string('reading');
-            $table->string('writing');
-            $table->string('speaking');
+            $table->json('test_scores');
 
             //Employment
             $table->string('employer_name');
@@ -85,8 +80,7 @@ return new class extends Migration
             $table->date('employment_end');
 
             //Citizen and Visa Information
-            $table->string('question');
-            $table->string('option');
+            $table->json('visa_details');
 
             //Lead Management
             $table->string('lead_status');

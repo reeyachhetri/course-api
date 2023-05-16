@@ -47,6 +47,14 @@ return new class extends Migration
             $table->string('temporary_postal_code');
             $table->string('temporary_street');
 
+            //Parent's Information
+            $table->string('parents_full_name');
+            $table->string('parents_email');
+            $table->string('parents_contact_number');
+            $table->enum('parents_education',['NA','Secondary','High School','Undergraduate','Graduate','PHD']);
+            $table->string('estimated_annual_household');
+
+
             $table->softDeletes();
             $table->timestamps();
         });

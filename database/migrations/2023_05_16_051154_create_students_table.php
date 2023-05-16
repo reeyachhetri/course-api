@@ -41,7 +41,11 @@ return new class extends Migration
             $table->string('postal_code');
             $table->string('street');
 
-            
+            //Temporary Address
+            $table->string('temporary_state');
+            $table->string('temporary_district');
+            $table->string('temporary_postal_code');
+            $table->string('temporary_street');
 
             $table->softDeletes();
             $table->timestamps();

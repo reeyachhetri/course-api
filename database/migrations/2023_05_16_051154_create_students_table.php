@@ -53,11 +53,11 @@ return new class extends Migration
             $table->string('guardians_last_name');
             $table->string('guardians_email_address');
             $table->string('guardians_contact_number');
-            $table->enum('guardians_education',['NA','Secondary','High School','Undergraduate','Graduate','PHD']);
+            $table->string('guardians_education');
             $table->string('estimated_annual_household');
 
-            //Student Education Information
-            $table->enum('highest_education_level',['NA','Secondary','High School','Undergraduate','Graduate','PHD']);
+            //Student Education Information',
+            $table->string('highest_education_level');
             $table->string('high_school_name');
             $table->string('high_school_address');
             $table->date('high_school_start_date');
@@ -68,7 +68,7 @@ return new class extends Migration
             $table->date('college_end_date');
 
             //English And Standardized Test Scores
-            $table->enum('exams_taken',['IELTS','PTE','TOEFL', 'GMAT', 'ACT', 'GRE', 'SAT', 'Duolingo', 'CAE']);
+            $table->string('exams_taken');
             $table->date('exams_date');
             $table->string('overall_score');
             $table->string('listening');
@@ -87,7 +87,14 @@ return new class extends Migration
             //Citizen and Visa Information
             $table->string('question');
             $table->string('option');
-            
+
+            //Lead Management
+            $table->string('lead_status');
+            $table->string('applying_for');
+            $table->string('interested_country');
+            $table->string('live_course');
+            $table->string('shortlisted_courses');
+
             $table->softDeletes();
             $table->timestamps();
         });

@@ -15,7 +15,4 @@ class CourseDTO extends Data{
     public string $description;
     public string $admission_requirements;
 
-
-
-
 }

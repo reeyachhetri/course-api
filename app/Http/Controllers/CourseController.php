@@ -36,22 +36,16 @@ class CourseController extends Controller
     }
 
 
-
-
     public function update(UpdateCourseRequest $request, Course $course, CourseService $courseService)
     {
         $course = $courseService->update($course, $request->all());
-
         return new CourseResource($course);
     }
-
-
 
 
     public function destroy(CourseService $courseService, Course $course)
     {
         $course = $courseService->delete($course);
-
         return new CourseResource($course);
     }
 }
